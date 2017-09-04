@@ -11,7 +11,7 @@ class DashboardController extends Controller
         // Checking for session.
         if(!session()->has('user'))
         {
-            return redirect('/');
+            return redirect('login');
         }
         else{
             return view('admin.dashboard');

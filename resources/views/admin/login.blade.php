@@ -13,15 +13,24 @@
                 </div>
 
                 <div class="login-form">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Username or email" />
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control" placeholder="Password" />
-                    </div>
-                    <div class="form-group">
-                        <button type="button" class="btn btn-lg btn-block btn-login no-radius">LOGIN</button>
-                    </div>
+                    @if(Session::has('message'))
+                        <div class="alert alert-{{Session::get('class')}}" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            {{Session::get('message')}}
+                        </div>
+                    @endif
+                    <form method="post" action="{{ route('auth') }}">
+                        {{ csrf_field() }}
+                        <div class="form-group">
+                            <input type="text" class="form-control input-no-background" name="email" placeholder="Email" />
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control input-no-background" name="password" placeholder="Password" />
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-lg btn-block btn-login no-radius" value="LOGIN" />
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

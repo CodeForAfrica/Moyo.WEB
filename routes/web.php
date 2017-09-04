@@ -11,9 +11,27 @@
 |
 */
 
-Route::get('/', [
+Route::get('/', function(){
+    return redirect('login');
+});
+
+Route::get('login', [
     'uses' => 'LoginController@index',
     'as' => 'login'
+]);
+
+Route::get('auth',function(){
+    return redirect('/');
+});
+
+Route::post('auth', [
+    'uses' => 'AuthController@index',
+    'as' => 'auth'
+]);
+
+Route::get('logout', [
+    'uses' => 'LogoutController@index',
+    'as' => 'logout'
 ]);
 
 Route::get('dashboard', [

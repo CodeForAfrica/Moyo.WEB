@@ -38,3 +38,13 @@ Route::get('dashboard', [
     'uses' => 'DashboardController@index',
     'as' => 'dashboard'
 ]);
+
+Route::get('drugs', [
+    'uses' => 'DrugsController@index',
+    'as' => 'drugs'
+]);
+
+Route::get('pricechecks', [
+    'uses' => 'PriceChecksController@index',
+    'as' => 'pricechecks'
+]);

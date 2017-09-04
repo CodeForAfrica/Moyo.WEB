@@ -19,7 +19,7 @@
     @yield('content')
 
     <script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('js/moyo.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/Chart.min.js') }}" type="text/javascript"></script>
     @yield('scripts')
 </body>
 </html>

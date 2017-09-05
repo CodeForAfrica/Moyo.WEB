@@ -48,3 +48,13 @@ Route::get('pricechecks', [
     'uses' => 'PriceChecksController@index',
     'as' => 'pricechecks'
 ]);
+
+Route::get('wrongchecks', [
+    'uses' => 'WrongChecksController@index',
+    'as' => 'wrongchecks'
+]);
+
+Route::get('users', [
+    'uses' => 'UsersController@index',
+    'as' => 'users'
+]);

@@ -102,6 +102,21 @@ Route::get('wrongchecks', [
     'as' => 'wrongchecks'
 ]);
 
+Route::get('wrongchecks/viewall', [
+    'uses' => 'WrongChecksController@viewall',
+    'as' => 'wrongchecks.viewall'
+]);
+
+Route::get('wrongchecks/view/{id}', [
+    'uses' => 'WrongChecksController@view',
+    'as' => 'wrongchecks.view'
+]);
+
+Route::get('wrongchecks/delete/{id}', [
+    'uses' => 'WrongChecksController@delete',
+    'as' => 'wrongchecks.delete'
+]);
+
 // Users routes
 Route::get('users', [
     'uses' => 'UsersController@index',

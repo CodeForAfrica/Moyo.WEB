@@ -85,7 +85,33 @@ Route::get('wrongchecks', [
     'as' => 'wrongchecks'
 ]);
 
+// Users routes
 Route::get('users', [
     'uses' => 'UsersController@index',
     'as' => 'users'
+]);
+
+Route::get('users/view/{id}', [
+    'uses' => 'UsersController@view',
+    'as' => 'users.view'
+]);
+
+Route::get('users/edit/{id}', [
+    'uses' => 'UsersController@edit',
+    'as' => 'users.edit'
+]);
+
+Route::get('users/delete/{id}', [
+    'uses' => 'UsersController@delete',
+    'as' => 'users.delete'
+]);
+
+Route::post('users', [
+    'uses' => 'UsersController@update',
+    'as' => 'users.update'
+]);
+
+Route::post('users/create', [
+    'uses' => 'UsersController@create',
+    'as' => 'users.create'
 ]);

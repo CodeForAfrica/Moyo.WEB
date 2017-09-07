@@ -39,9 +39,40 @@ Route::get('dashboard', [
     'as' => 'dashboard'
 ]);
 
+// Drugs routes
 Route::get('drugs', [
     'uses' => 'DrugsController@index',
     'as' => 'drugs'
+]);
+
+Route::get('drugs/viewall', [
+    'uses' => 'DrugsController@viewall',
+    'as' => 'drugs.viewall'
+]);
+
+Route::get('drugs/view/{id}', [
+    'uses' => 'DrugsController@view',
+    'as' => 'drugs.view'
+]);
+
+Route::get('drugs/edit/{id}', [
+    'uses' => 'DrugsController@edit',
+    'as' => 'drugs.edit'
+]);
+
+Route::get('drugs/delete/{id}', [
+    'uses' => 'DrugsController@delete',
+    'as' => 'drugs.delete'
+]);
+
+Route::post('drugs', [
+    'uses' => 'DrugsController@update',
+    'as' => 'drugs.update'
+]);
+
+Route::post('drugs/create', [
+    'uses' => 'DrugsController@create',
+    'as' => 'drugs.create'
 ]);
 
 Route::get('pricechecks', [

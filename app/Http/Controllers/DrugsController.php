@@ -49,7 +49,287 @@ class DrugsController extends Controller
                 'suspension_drugs' => $suspension_drugs,
                 'syrup_drugs' => $syrup_drugs,
             );
-            return view('admin.drugs',compact('user','data'));
+            return view('admin.drugs.main',compact('user','data'));
+        }
+    }
+
+    public function viewall()
+    {
+        // Checking for session.
+        if(!session()->has('user'))
+        {
+            return redirect('login');
+        }
+        else{
+            $user = session('user');
+            $drugs = $this->getDrugs();
+
+            $data = array(
+                'page' => 'Drugs',
+                'drugs' => $drugs
+            );
+            return view('admin.drugs.viewall',compact('user','data'));
+        }
+    }
+
+    public function view($id=0)
+    {
+        // Checking for session.
+        if(!session()->has('user'))
+        {
+            return redirect('login');
+        }
+        else{
+            $user = session('user');
+
+            $client = new \GuzzleHttp\Client(['http_errors' => true]);
+            $url = env('APP_URL');
+            $url .= "drugs";
+            $url .= "/";
+            $url .= $id;
+
+            try{
+                $response = $client->request('GET', $url);
+                $response_json = json_decode($response->getBody());
+
+                if($response_json->drug)
+                {
+                    $data = array(
+                        'page' => 'Drugs',
+                        'drug' => $response_json->drug
+                    );
+                    return view('admin.drugs.drugview',compact('user','data'));
+                }
+                else{
+                    // No Drug.
+                    return redirect('drugs');
+                }
+            }
+            catch (ClientErrorResponseException $e) {
+                \Log::info("Client error :" . $e->getResponse()->getBody(true));
+                return redirect('drugs');
+            }
+            catch (ServerErrorResponseException $e) {
+                \Log::info("Server error" . $e->getResponse()->getBody(true));
+                return redirect('drugs');
+            }
+            catch (BadResponseException $e) {
+                \Log::info("BadResponse error" . $e->getResponse()->getBody(true));
+                return redirect('drugs');
+            }
+            catch (\Exception $e) {
+                \Log::info("Err" . $e->getMessage());
+                return redirect('drugs');
+            }
+        }
+    }
+
+    public function edit($id=0)
+    {
+        // Checking for session.
+        if(!session()->has('user'))
+        {
+            return redirect('login');
+        }
+        else{
+            $user = session('user');
+
+            $client = new \GuzzleHttp\Client(['http_errors' => true]);
+            $url = env('APP_URL');
+            $url .= "drugs";
+            $url .= "/";
+            $url .= $id;
+
+            try{
+                $response = $client->request('GET', $url);
+                $response_json = json_decode($response->getBody());
+
+                if($response_json->drug)
+                {
+                    $data = array(
+                        'page' => 'Drugs',
+                        'drug' => $response_json->drug
+                    );
+                    return view('admin.drugs.drug_edit',compact('user','data'));
+                }
+                else{
+                    // No Pharmacy.
+                    return redirect('drugs');
+                }
+            }
+            catch (ClientErrorResponseException $e) {
+                \Log::info("Client error :" . $e->getResponse()->getBody(true));
+                return redirect('drugs');
+            }
+            catch (ServerErrorResponseException $e) {
+                \Log::info("Server error" . $e->getResponse()->getBody(true));
+                return redirect('drugs');
+            }
+            catch (BadResponseException $e) {
+                \Log::info("BadResponse error" . $e->getResponse()->getBody(true));
+                return redirect('drugs');
+            }
+            catch (\Exception $e) {
+                \Log::info("Err" . $e->getMessage());
+                return redirect('drugs');
+            }
+        }
+    }
+
+    public function delete($id)
+    {
+        // Checking for session.
+        if(!session()->has('user'))
+        {
+            return redirect('login');
+        }
+        else{
+            $user = session('user');
+
+            $client = new \GuzzleHttp\Client(['http_errors' => true]);
+            $url = env('APP_URL');
+            $url .= "drugs";
+            $url .= "/";
+            $url .= $id;
+            $url .= "?api_token=";
+            $url .= $user->api_token;
+
+            try{
+                $response = $client->request('DELETE', $url);
+                $response_json = json_decode($response->getBody());
+
+                return redirect()->back()->with(['message' => 'Drug removed.','class' => 'success']);
+            }
+            catch (ClientErrorResponseException $e) {
+                \Log::info("Client error :" . $e->getResponse()->getBody(true));
+                return redirect('drugs');
+            }
+            catch (ServerErrorResponseException $e) {
+                \Log::info("Server error" . $e->getResponse()->getBody(true));
+                return redirect('drugs');
+            }
+            catch (BadResponseException $e) {
+                \Log::info("BadResponse error" . $e->getResponse()->getBody(true));
+                return redirect('drugs');
+            }
+            catch (\Exception $e) {
+                \Log::info("Err" . $e->getMessage());
+                return redirect('drugs');
+            }
+        }
+    }
+
+    public function update(Request $request)
+    {
+        // Checking for session.
+        if(!session()->has('user'))
+        {
+            return redirect('login');
+        }
+        else{
+            $user = session('user');
+
+            $client = new \GuzzleHttp\Client(['http_errors' => true]);
+            $url = env('APP_URL');
+            $url .= "drugs";
+            $url .= "/";
+            $url .= $request->id;
+            $url .= "?api_token=";
+            $url .= $user->api_token;
+
+            $values = array(
+                'name' => $request->name,
+                'form' => $request->form,
+                'strength' => $request->strength,
+                'uom' => $request->uom,
+                'price' => $request->price
+            );
+
+            try{
+                $response = $client->request('PUT', $url, ['json' => $values]);
+                $response_json = json_decode($response->getBody());
+
+                if($response_json->drug)
+                {
+                    return redirect()->back()->with(['message' => 'Drug details are updated.','class' => 'success']);
+                }
+                else{
+                    // No Pharmacy.
+                    return redirect('drugs');
+                }
+            }
+            catch (ClientErrorResponseException $e) {
+                \Log::info("Client error :" . $e->getResponse()->getBody(true));
+                return redirect('drugs');
+            }
+            catch (ServerErrorResponseException $e) {
+                \Log::info("Server error" . $e->getResponse()->getBody(true));
+                return redirect('drugs');
+            }
+            catch (BadResponseException $e) {
+                \Log::info("BadResponse error" . $e->getResponse()->getBody(true));
+                return redirect('drugs');
+            }
+            catch (\Exception $e) {
+                \Log::info("Err" . $e->getMessage());
+                return redirect('drugs');
+            }
+        }
+    }
+
+    public function create(Request $request)
+    {
+        // Checking for session.
+        if(!session()->has('user'))
+        {
+            return redirect('login');
+        }
+        else{
+            $user = session('user');
+
+            $client = new \GuzzleHttp\Client(['http_errors' => true]);
+            $url = env('APP_URL');
+            $url .= "drugs";
+            $url .= "?api_token=";
+            $url .= $user->api_token;
+
+            $values = array(
+                'name' => $request->name,
+                'form' => $request->form,
+                'strength' => $request->strength,
+                'uom' => $request->uom,
+                'price' => $request->price
+            );
+
+            try{
+                $response = $client->request('POST', $url, ['json' => $values]);
+                $response_json = json_decode($response->getBody());
+
+                if($response_json->drug)
+                {
+                    return redirect()->back()->with(['message' => 'Drug added.','class' => 'success']);
+                }
+                else{
+                    // No Drug.
+                    return redirect('drugs');
+                }
+            }
+            catch (ClientErrorResponseException $e) {
+                \Log::info("Client error :" . $e->getResponse()->getBody(true));
+                return redirect('drugs');
+            }
+            catch (ServerErrorResponseException $e) {
+                \Log::info("Server error" . $e->getResponse()->getBody(true));
+                return redirect('drugs');
+            }
+            catch (BadResponseException $e) {
+                \Log::info("BadResponse error" . $e->getResponse()->getBody(true));
+                return redirect('drugs');
+            }
+            catch (\Exception $e) {
+                \Log::info("Err" . $e->getMessage());
+                return redirect('drugs');
+            }
         }
     }
 

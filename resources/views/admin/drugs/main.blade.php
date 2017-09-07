@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Administrator - Dashboard | Moyo - Code for Tanzania
+    Administrator - Drugs | Moyo - Code for Tanzania
 @stop
 
 @section('content')
@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-md-2 menus">
                 <div class="logo">
-                    <img src="../images/heart_white.png"/>
+                    <img src="{{ asset('images/heart_white.png') }}"/>
                 </div>
 
                 @include('admin.includes.navs')
@@ -30,7 +30,7 @@
                 <div class="main">
                     <div class="row">
                         <div class="col-md-12">
-                            <button type="button" class="btn btn-login pull-right no-radius">View All Drugs</button>
+                            <a href="{{ route('drugs.viewall') }}" class="btn btn-login pull-right no-radius">View All Drugs</a>
                         </div>
                     </div><!-- close div .row -->
                     <br />

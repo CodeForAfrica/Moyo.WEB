@@ -105,7 +105,7 @@
                                             </tbody>
                                         </table>
                                     @else
-                                        no data;
+                                        <center><h3>There is no any Price Check.</h3></center>
                                     @endif
                                 </div>
                             </div>
@@ -137,7 +137,7 @@
                                             </tbody>
                                         </table>
                                     @else
-                                        no data;
+                                        <center><h3>There is no any Wrong Check.</h3></center>
                                     @endif
                                 </div>
                             </div>

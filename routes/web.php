@@ -75,11 +75,28 @@ Route::post('drugs/create', [
     'as' => 'drugs.create'
 ]);
 
+// Price Checks routes
 Route::get('pricechecks', [
     'uses' => 'PriceChecksController@index',
     'as' => 'pricechecks'
 ]);
 
+Route::get('pricechecks/viewall', [
+    'uses' => 'PriceChecksController@viewall',
+    'as' => 'pricechecks.viewall'
+]);
+
+Route::get('pricechecks/view/{id}', [
+    'uses' => 'PriceChecksController@view',
+    'as' => 'pricechecks.view'
+]);
+
+Route::get('pricechecks/delete/{id}', [
+    'uses' => 'PriceChecksController@delete',
+    'as' => 'pricechecks.delete'
+]);
+
+// Wrong Checks routes
 Route::get('wrongchecks', [
     'uses' => 'WrongChecksController@index',
     'as' => 'wrongchecks'

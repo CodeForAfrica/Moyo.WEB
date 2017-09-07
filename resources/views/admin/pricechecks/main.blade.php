@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Administrator - Dashboard | Moyo - Code for Tanzania
+    Administrator - Price Checks | Moyo - Code for Tanzania
 @stop
 
 @section('content')
@@ -30,7 +30,7 @@
                 <div class="main">
                     <div class="row">
                         <div class="col-md-12">
-                            <button type="button" class="btn btn-login pull-right no-radius">View All Price Checks</button>
+                            <a href="{{ route('pricechecks.viewall') }}" class="btn btn-login pull-right no-radius">View All Price Checks</a>
                         </div>
                     </div><!-- close div .row -->
                     <br />

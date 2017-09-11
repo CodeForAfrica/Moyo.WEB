@@ -65,7 +65,7 @@
                                             <td>{{ $n++ }}</td>
                                             <td>{{ $user->name }}</td>
                                             <td>{{ $user->email }}</td>
-                                            <td>{{ $user->created_at }}</td>
+                                            <td>{{ date('M j Y g:i A', strtotime($user->created_at)) }}</td>
                                             <td>
                                                 <a href="{{ route('users.delete',$user->id) }}" class="btn btn-xs btn-danger no-radius" style="margin-right:10px;" disabled>Delete</a>
                                                 <a href="{{ route('users.edit',$user->id) }}" type="button" class="btn btn-xs btn-warning no-radius" style="margin-right:10px;">Edit</a>

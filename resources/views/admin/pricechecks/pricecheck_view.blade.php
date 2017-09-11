@@ -56,6 +56,10 @@
                                     <th>Extra Amount</th>
                                     <td><span style="color:<?= $color; ?>">{{ $data['price_check']->extra_amount }}</span></td>
                                 </tr>
+                                <tr>
+                                    <th>Date Checked</th>
+                                    <td>{{ date('M j Y g:i A', strtotime($data['price_check']->created_at)) }}</td>
+                                </tr>
                             </table>
 
                             <div class="pull-right">

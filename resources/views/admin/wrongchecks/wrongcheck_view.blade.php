@@ -40,8 +40,8 @@
                                     <td>{{ $data['wrong_check']->buying_amount }}</td>
                                 </tr>
                                 <tr>
-                                    <th>Date Added</th>
-                                    <td>{{ $data['wrong_check']->created_at }}</td>
+                                    <th>Date Checked</th>
+                                    <td>{{ date('M j Y g:i A', strtotime($data['wrong_check']->created_at)) }}</td>
                                 </tr>
                             </table>
 

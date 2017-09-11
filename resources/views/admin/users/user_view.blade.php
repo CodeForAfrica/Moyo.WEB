@@ -40,8 +40,8 @@
                                     <td>{{ $data['user']->email }}</td>
                                 </tr>
                                 <tr>
-                                    <th>Date Added</th>
-                                    <td>{{ $data['user']->created_at }}</td>
+                                    <th>Date Registered</th>
+                                    <td>{{ date('M j Y g:i A', strtotime($data['user']->created_at)) }}</td>
                                 </tr>
                             </table>
 

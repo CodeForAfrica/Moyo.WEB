@@ -50,6 +50,7 @@
                                             <th>Buying Price</th>
                                             <th>Status</th>
                                             <th>Extra Amount</th>
+                                            <th>Phone Number</th>
                                             <th>Date Checked</th>
                                             <th style="width:120px;">Options</th>
                                         </tr>
@@ -67,6 +68,7 @@
                                                     <td>{{ $price_check->buying_price }}</td>
                                                     <td><span style="color:<?= $color; ?>">{{ ucfirst($price_check->status) }}</span></td>
                                                     <td><span style="color:<?= $color; ?>">{{ $price_check->extra_amount }}</span></td>
+                                                    <td>{{ $price_check->checker_phone_number }}</td>
                                                     <td>{{ date('M j Y g:i A', strtotime($price_check->created_at)) }}</td>
                                                     <td>
                                                         <a href="{{ route('pricechecks.delete',$price_check->id) }}" class="btn btn-xs btn-danger no-radius" style="margin-right:10px;">Delete</a>

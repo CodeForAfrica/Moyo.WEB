@@ -29,14 +29,14 @@
 
                 <div class="main">
                     <div class="row">
-                        <div class="col-md-3" style="overflow:auto;">
+                        <div class="col-md-2" style="overflow:auto;">
                             <div class="panel panel-default">
                                 <div class="panel-heading">Total Drugs</div>
                                 <div class="panel-body">
                                     <span><span class="color-pink"><strong>{{ count($data['drugs']) }}</strong></span> Drugs</span>
                                 </div>
                             </div>
-                        </div><!-- close div .col-md-3 -->
+                        </div><!-- close div .col-md-2 -->
 
                         <div class="col-md-3" style="overflow:auto;">
                             <div class="panel panel-default">
@@ -56,14 +56,23 @@
                             </div>
                         </div><!-- close div .col-md-3 -->
 
-                        <div class="col-md-3" style="overflow:auto;">
+                        <div class="col-md-2" style="overflow:auto;">
                             <div class="panel panel-default">
-                                <div class="panel-heading">Total Users</div>
+                                <div class="panel-heading">Total Unique Users</div>
+                                <div class="panel-body">
+                                    <span><span class="color-pink"><strong>{{ count($data['checkers']) }}</strong></span> Users</span>
+                                </div>
+                            </div>
+                        </div><!-- close div .col-md-2 -->
+
+                        <div class="col-md-2" style="overflow:auto;">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">Total Administrators</div>
                                 <div class="panel-body">
                                     <span><span class="color-pink"><strong>{{ count($data['users']) }}</strong></span> Users</span>
                                 </div>
                             </div>
-                        </div><!-- close div .col-md-3 -->
+                        </div><!-- close div .col-md-2 -->
                     </div><!-- close div .row -->
 
                     <hr />

@@ -47,6 +47,7 @@
                                         <tr>
                                             <th>Drug Name</th>
                                             <th>Buying Price</th>
+                                            <th>Phone Number</th>
                                             <th>Date Checked</th>
                                             <th style="width:120px;">Options</th>
                                         </tr>
@@ -57,6 +58,7 @@
                                                 <tr>
                                                     <td>{{ $wrong_check->drug_name }}</td>
                                                     <td>{{ $wrong_check->buying_amount }}</td>
+                                                    <td>{{ $wrong_check->checker_phone_number }}</td>
                                                     <td>{{ date('M j Y g:i A', strtotime($wrong_check->created_at)) }}</td>
                                                     <td>
                                                         <a href="{{ route('wrongchecks.delete',$wrong_check->id) }}" class="btn btn-xs btn-danger no-radius" style="margin-right:10px;">Delete</a>

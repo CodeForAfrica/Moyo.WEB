@@ -69,7 +69,7 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">Total Administrators</div>
                                 <div class="panel-body">
-                                    <span><span class="color-pink"><strong>{{ count($data['users']) }}</strong></span> Users</span>
+                                    <span><span class="color-pink"><strong>{{ count($data['users']) }}</strong></span> Administrators</span>
                                 </div>
                             </div>
                         </div><!-- close div .col-md-2 -->

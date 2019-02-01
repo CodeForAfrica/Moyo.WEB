@@ -88,8 +88,8 @@
                                             <thead>
                                                 <tr>
                                                     <th>Drug Name</th>
-                                                    <th>Price</th>
-                                                    <th>Buying Price</th>
+                                                    <th>Indicator Price</th>
+                                                    <th>Entered Price</th>
                                                     <th>Status</th>
                                                     <th>Extra Amount</th>
                                                 </tr>

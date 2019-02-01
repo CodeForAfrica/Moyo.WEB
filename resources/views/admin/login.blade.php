@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-md-6 col-md-offset-3 login-box">
                 <div class="brand">
-                    <img src="{{ asset('images/heart.png') }}"/>
+                    <img src="/images/heart.png"/>
                 </div>
 
                 <div class="login-form">

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Transformers\DrugTransformer;
 class DrugsController extends Controller
 {
     public function index()
@@ -15,7 +15,7 @@ class DrugsController extends Controller
         }
         else{
             $user = session('user');
-            $drugs = $this->getDrugs();
+            $drugs = DrugTransformer::transform($this->getDrugs());
             $tablet_drugs = $this->search($drugs,"form","Tablet");
             $liquid_drugs = $this->search($drugs,"form","Liquid");
             $capsule_drugs = $this->search($drugs,"form","Capsule");
@@ -62,7 +62,7 @@ class DrugsController extends Controller
         }
         else{
             $user = session('user');
-            $drugs = $this->getDrugs();
+            $drugs = DrugTransformer::transform($this->getDrugs());
 
             $data = array(
                 'page' => 'Drugs',

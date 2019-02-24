@@ -160,4 +160,29 @@ class WrongChecksController extends Controller
             return null;
         }
     }
+
+    /**
+     * Export to Xlsx
+     */
+    function export(){
+        $user = session('user');
+
+        $wrong_checks = $this->getWrongChecks($user);
+        $formatted_wrong_checks = [];
+        foreach($wrong_checks as $Item){
+            $Drug = [
+                'name' => $Item->drug->name,
+                'price' => $Item->drug->price,
+                'buying_price' => $Item->buying_price,
+                'status' => ucfirst($Item->status),
+                'extra_amount' => $Item->extra_amount,
+                'phone_number' => $Item->checker_phone_number ,
+                'date_checked' => date('M j Y g:i A', strtotime($Item->created_at)),
+            ];
+            
+            array_push($formatted_wrong_checks,$Drug);
+        }
+
+        return new PriceChecksExport($formatted_wrong_checks);
+    }
 }

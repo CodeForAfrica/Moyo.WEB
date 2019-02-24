@@ -204,6 +204,9 @@ class PriceChecksController extends Controller
         return $categories;
     }
 
+    /**
+     * Export to Xlsx
+     */
     function export(){
         $user = session('user');
 

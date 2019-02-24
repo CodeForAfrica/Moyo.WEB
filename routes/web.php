@@ -111,6 +111,10 @@ Route::get('wrongchecks/viewall', [
     'uses' => 'WrongChecksController@viewall',
     'as' => 'wrongchecks.viewall'
 ]);
+Route::get('wrongchecks/export', [
+    'uses' => 'WrongChecksController@export',
+    'as' => 'wrongchecks.export'
+]);
 
 Route::get('wrongchecks/view/{id}', [
     'uses' => 'WrongChecksController@view',

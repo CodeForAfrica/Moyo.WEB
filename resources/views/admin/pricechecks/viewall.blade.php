@@ -40,7 +40,6 @@
                                     {{Session::get('message')}}
                                 </div>
                             @endif
-                            
                             @if(count($data['price_checks']) > 0)
                                 <table id="myTable" class="table">
                                     <thead>
@@ -69,7 +68,7 @@
                                                     <td><span style="color:<?= $color; ?>">{{ ucfirst($price_check->status) }}</span></td>
                                                     <td><span style="color:<?= $color; ?>">{{ $price_check->extra_amount }}</span></td>
                                                     <td>{{ $price_check->checker_phone_number }}</td>
-                                                    <td>{{ date('M j Y g:i A', strtotime($price_check->created_at)) }}</td>
+                                                    <td data-order="{{ $price_check->created_at}}">{{ date('M j Y g:i A', strtotime($price_check->created_at)) }}</td>
                                                     <td>
                                                         <a href="{{ route('pricechecks.delete',$price_check->id) }}" class="btn btn-xs btn-danger no-radius" style="margin-right:10px;">Delete</a>
                                                        <a href="{{ route('pricechecks.view',$price_check->id) }}" type="button" class="btn btn-xs btn-success no-radius">View</a>
@@ -94,7 +93,10 @@
     <script src="{{ asset('js/jquery.dataTables.min.js') }}" type="text/javascript"></script>
     <script>
         $(document).ready(function(){
-            $('#myTable').DataTable();
+            var table = $('#myTable').DataTable({
+                "order": [[ 6, "desc" ]]
+            });
+
         });
     </script>
 @stop

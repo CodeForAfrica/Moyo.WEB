@@ -86,6 +86,11 @@ Route::get('pricechecks/viewall', [
     'as' => 'pricechecks.viewall'
 ]);
 
+Route::get('pricechecks/export', [
+    'uses' => 'PriceChecksController@export',
+    'as' => 'pricechecks.export'
+]);
+
 Route::get('pricechecks/view/{id}', [
     'uses' => 'PriceChecksController@view',
     'as' => 'pricechecks.view'

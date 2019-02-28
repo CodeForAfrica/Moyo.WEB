@@ -15,7 +15,7 @@ class DrugsController extends Controller
         }
         else{
             $user = session('user');
-            $drugs = DrugTransformer::transform($this->getDrugs());
+            $drugs = $this->getDrugs();
             $tablet_drugs = $this->search($drugs,"form","Tablet");
             $liquid_drugs = $this->search($drugs,"form","Liquid");
             $capsule_drugs = $this->search($drugs,"form","Capsule");
@@ -62,7 +62,7 @@ class DrugsController extends Controller
         }
         else{
             $user = session('user');
-            $drugs = DrugTransformer::transform($this->getDrugs());
+            $drugs = $this->getDrugs();
 
             $data = array(
                 'page' => 'Drugs',
@@ -345,7 +345,7 @@ class DrugsController extends Controller
 
             if($response_json->drugs)
             {
-                return $response_json->drugs;
+                return DrugTransformer::transform($response_json->drugs);
             }
             else{
                 // No Drugs.

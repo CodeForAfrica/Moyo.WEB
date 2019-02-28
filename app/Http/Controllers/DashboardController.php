@@ -16,7 +16,7 @@ class DashboardController extends Controller
         }
         else{
             $user = session('user');
-            $drugs = DrugTransformer::transform($this->getDrugs());
+            $drugs = $this->getDrugs();
 
             $price_checks = $this->getPriceChecks($user);
             $wrong_checks = $this->getWrongChecks($user);
@@ -48,7 +48,7 @@ class DashboardController extends Controller
 
             if($response_json->drugs)
             {
-                return $response_json->drugs;
+                return DrugTransformer::transform($response_json->drugs);;
             }
             else{
                 // No Drugs.

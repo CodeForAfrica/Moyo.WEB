@@ -40,6 +40,9 @@
                                     {{Session::get('message')}}
                                 </div>
                             @endif
+                            <div class="pull-right">
+                                <a class="btn btn-primary" href="{{ route('pricechecks.export') }}">Export to Excel</a>
+                            </div>
                             @if(count($data['price_checks']) > 0)
                                 <table id="myTable" class="table">
                                     <thead>

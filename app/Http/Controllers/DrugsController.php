@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Transformers\DrugTransformer;
 class DrugsController extends Controller
 {
     public function index()
@@ -345,7 +345,7 @@ class DrugsController extends Controller
 
             if($response_json->drugs)
             {
-                return $response_json->drugs;
+                return DrugTransformer::transform($response_json->drugs);
             }
             else{
                 // No Drugs.

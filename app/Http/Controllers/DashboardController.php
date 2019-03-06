@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Transformers\DrugTransformer;
 
 class DashboardController extends Controller
 {
@@ -16,6 +17,7 @@ class DashboardController extends Controller
         else{
             $user = session('user');
             $drugs = $this->getDrugs();
+
             $price_checks = $this->getPriceChecks($user);
             $wrong_checks = $this->getWrongChecks($user);
             $users = $this->getUsers($user);
@@ -46,7 +48,7 @@ class DashboardController extends Controller
 
             if($response_json->drugs)
             {
-                return $response_json->drugs;
+                return DrugTransformer::transform($response_json->drugs);;
             }
             else{
                 // No Drugs.

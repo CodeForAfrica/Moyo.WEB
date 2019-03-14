@@ -48,6 +48,10 @@
                                     <thead>
                                         <tr>
                                             <th>Drug Name</th>
+                                            <th>Indicator No. of Pills</th>
+                                            <th>No. of Pills Entered</th>
+                                            <th>Indicator Dosage</th>
+                                            <th>Dosage Entered</th>
                                             <th>Price</th>
                                             <th>Buying Price</th>
                                             <th>Status</th>
@@ -66,6 +70,10 @@
                                             ?>
                                                 <tr>
                                                     <td>{{ $price_check->drug->name }}</td>
+                                                    <td>{{ $price_check->drug->uom }}</td>
+                                                    <td>{{ $price_check->measure }}</td>
+                                                    <td>{{ $price_check->drug->strength }}</td>
+                                                    <td>{{ $price_check->strength }}</td>
                                                     <td>{{ $price_check->drug->price }}</td>
                                                     <td>{{ $price_check->buying_price }}</td>
                                                     <td><span style="color:<?= $color; ?>">{{ ucfirst($price_check->status) }}</span></td>

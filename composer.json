@@ -5,7 +5,8 @@
     "license": "MIT",
     "type": "project",
     "require": {
-        "php": "~7.1.25",
+        "php": "~7.1.26",
+        "ext-gd": "*"
         "fideloper/proxy": "~3.3",
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "5.5.*",

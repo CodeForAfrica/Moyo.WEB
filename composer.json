@@ -5,19 +5,18 @@
     "license": "MIT",
     "type": "project",
     "require": {
-        "php": "~7.1.26",
+        "php": "~8.3.36",
         "ext-gd": "*",
-        "fideloper/proxy": "~3.3",
-        "guzzlehttp/guzzle": "^6.3",
-        "laravel/framework": "5.5.*",
-        "laravel/tinker": "~1.0",
-        "maatwebsite/excel": "^3.1"
+        "guzzlehttp/guzzle": "7.16.0",
+        "laravel/framework": "8.83.29",
+        "laravel/tinker": "2.11.1",
+        "maatwebsite/excel": "3.1.70",
+        "laravel/helpers": "1.8.3"
     },
     "require-dev": {
-        "filp/whoops": "~2.0",
-        "fzaninotto/faker": "~1.4",
-        "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "~6.0"
+        "fakerphp/faker": "1.24.1",
+        "mockery/mockery": "1.6.15",
+        "phpunit/phpunit": "9.6.38"
     },
     "autoload": {
         "classmap": [
@@ -35,7 +34,8 @@
     },
     "extra": {
         "laravel": {
-            "dont-discover": []
+            "dont-discover": [
+            ]
         }
     },
     "scripts": {
@@ -53,6 +53,9 @@
     "config": {
         "preferred-install": "dist",
         "sort-packages": true,
-        "optimize-autoloader": true
+        "optimize-autoloader": true,
+        "platform": {
+            "php": "8.3.36"
+        }
     }
 }
